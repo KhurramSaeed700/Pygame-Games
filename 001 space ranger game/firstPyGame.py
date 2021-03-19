@@ -13,8 +13,8 @@ screen = pygame.display.set_mode((800, 600))
 bg = pygame.image.load('assets/bg.png')
 
 # Music & SFX
-mixer.music.load('D://raima//Desktop//Python Game//1. space invaders//sound//bgMusic.mp3')
-mixer.music.set_volume(0.07)
+mixer.music.load('C://Users//Dell//PycharmProjects//Pygame Games//001 space ranger game//sfx//bgMusic.mp3')
+mixer.music.set_volume(1)
 mixer.music.play(-1)
 
 # title and icon of window
@@ -127,7 +127,7 @@ while running:
                 if bulletState == 'ready':
                     bulletX = playerX
                     fireBullet(bulletX, bulletY)
-                    bulletSound = mixer.Sound('D://raima//Desktop//Python Game//1. space invaders//sound//Laser.mp3')
+                    bulletSound = mixer.Sound('C://Users//Dell//PycharmProjects//Pygame Games//001 space ranger game//sfx//bullet-fire.mp3')
                     bulletSound.play()
 
         if event.type == pygame.KEYUP:
@@ -162,7 +162,7 @@ while running:
         # collision
         collision = ifCollision(enemyX[i], enemyY[i], bulletX, bulletY)
         if collision:
-            explosionSound = mixer.Sound('D://raima//Desktop//Python Game//1. space invaders//sound//Explosion.mp3')
+            explosionSound = mixer.Sound('C://Users//Dell//PycharmProjects//Pygame Games//001 space ranger game//sfx//bullet-hit.mp3')
             explosionSound.play()
             bulletY = 480
             bulletState = 'ready'

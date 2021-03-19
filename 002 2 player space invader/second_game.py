@@ -148,7 +148,7 @@ def main():
                     red_bullets.append(bullet)
                     bulletFire_sound.play()
 
-                if event.key == pygame.K_m and len(blue_bullets) < max_bullets:
+                if event.key == pygame.K_RCTRL and len(blue_bullets) < max_bullets:
                     bullet = pygame.Rect(blue.x, blue.y + blue.height // 2, 10, 10)
                     blue_bullets.append(bullet)
                     bulletFire_sound.play()
