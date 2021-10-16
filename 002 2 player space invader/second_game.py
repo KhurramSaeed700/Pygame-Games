@@ -1,6 +1,7 @@
 import os
 import pygame
 from pygame import mixer
+
 pygame.font.init()  # initialize pygame font library
 pygame.mixer.init()
 
@@ -19,29 +20,35 @@ blue_color = (0, 100, 255)
 
 fps = 60
 shipSize = 60  # size of ship both width and height
-bulletSize = 10  # size of bullet
+bulletSize = 50  # size of bullet
 player_vel = 5  # player velocity
 bullet_vel = 7  # bullet speed
 max_bullets = 3  # maximum bullets per player
 
-red_battleship_img = pygame.image.load(os.path.join('assets', 'battleship-red.png'))
+red_battleship_img = pygame.image.load(os.path.join('assets', 'ks.png'))
 red_battleship = pygame.transform.rotate(pygame.transform.scale(red_battleship_img, (shipSize, shipSize)),
-                                         270)  # RED SPACESHIP
-blue_battleship_img = pygame.image.load(os.path.join('assets', 'battleship-blue.png'))
+                                         0)  # RED SPACESHIP
+blue_battleship_img = pygame.image.load(os.path.join('assets', 'ss.png'))
 blue_battleship = pygame.transform.rotate(pygame.transform.scale(blue_battleship_img, (shipSize, shipSize)),
-                                          90)  # BLUE SPACESHIP
+                                          0)  # BLUE SPACESHIP
 
 border = pygame.Rect(width // 2 - 10, 0, 10, height)  # middle boarder separator
 
-red_bullet_image = pygame.image.load(os.path.join('assets', 'red-bullet.png'))
+red_bullet_image = pygame.image.load(os.path.join('assets', 'rs_R.png'))
 red_bullet = pygame.transform.scale(red_bullet_image, (bulletSize, bulletSize))  # red bullet
-blue_bullet_image = pygame.image.load(os.path.join('assets', 'blue-bullet.png'))
+blue_bullet_image = pygame.image.load(os.path.join('assets', 'rs_L.png'))
 blue_bullet = pygame.transform.scale(blue_bullet_image, (bulletSize, bulletSize))  # blue bullet
 
 bg = pygame.image.load(os.path.join('assets', 'bg.png'))  # bg image
 
-health_font = pygame.font.Font('D://raima//Videos//Fonts//early_gameboy//Early GameBoy.ttf', 20)
-winner_font = pygame.font.Font('D://raima//Videos//Fonts//early_gameboy//Early GameBoy.ttf', 40)
+# FONTS
+# for pc
+health_font = pygame.font.Font('D://Khurram//Videos//FONTS//early_gameboy//Early GameBoy.ttf', 20)
+winner_font = pygame.font.Font('D://Khurram//Videos//FONTS//early_gameboy//Early GameBoy.ttf', 40)
+
+# for laptop address
+# health_font = pygame.font.Font('D://raima//Videos//Fonts//early_gameboy//Early GameBoy.ttf', 20)
+# winner_font = pygame.font.Font('D://raima//Videos//Fonts//early_gameboy//Early GameBoy.ttf', 40)
 
 # Sounds
 bulletHit_sound = pygame.mixer.Sound(os.path.join('sfx', 'bullet-hit.mp3'))
@@ -49,7 +56,7 @@ bulletFire_sound = pygame.mixer.Sound(os.path.join('sfx', 'bullet-fire.mp3'))
 # bg_music_slow = pygame.mixer.Sound(os.path.join('sfx', 'bg-music-slow.mp3'))
 bg_music_medium = pygame.mixer.Sound(os.path.join('sfx', 'bg-music-medium.mp3'))
 bg_music_fast = pygame.mixer.Sound(os.path.join('sfx', 'bg-music-fast.mp3'))
-explosion=pygame.mixer.Sound(os.path.join('sfx', 'lose.mp3'))
+explosion = pygame.mixer.Sound(os.path.join('sfx', 'lose.mp3'))
 
 
 def draw_window(Red, Blue, red_bullets, blue_bullets, red_health, blue_health):
@@ -148,7 +155,7 @@ def main():
                     red_bullets.append(bullet)
                     bulletFire_sound.play()
 
-                if event.key == pygame.K_RCTRL and len(blue_bullets) < max_bullets:
+                if event.key == pygame.K_SPACE and len(blue_bullets) < max_bullets:
                     bullet = pygame.Rect(blue.x, blue.y + blue.height // 2, 10, 10)
                     blue_bullets.append(bullet)
                     bulletFire_sound.play()
